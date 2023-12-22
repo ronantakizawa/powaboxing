@@ -1,4 +1,3 @@
-import React from 'react';
 import FileUpload from './FileUpload';
 import viteLogo from '../public/vite.svg'; // Make sure the path to vite.svg is correct
 
