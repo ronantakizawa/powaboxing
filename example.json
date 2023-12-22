@@ -1,0 +1,365 @@
+{
+          "version": 2,
+          "punches": [        {
+          "id": "1_{100}_{1698291607279}",
+          "timestamp": 1698291607279,
+          "starRating": 5.0,
+          "acceleration": 39.13,
+          "speed": 19.49,
+          "inTime": 243,
+          "outTime": 63,
+          "distance": 142.63,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{200}_{1698291607780}",
+          "timestamp": 1698291607780,
+          "starRating": 4.0,
+          "acceleration": 32.92,
+          "speed": 69.06,
+          "inTime": 247,
+          "outTime": 49,
+          "distance": 805.61,
+          "hand": 0,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "1_{300}_{1698291608278}",
+          "timestamp": 1698291608278,
+          "starRating": 5.0,
+          "acceleration": 47.87,
+          "speed": 65.34,
+          "inTime": 163,
+          "outTime": 12,
+          "distance": 1157.73,
+          "hand": 1,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "1_{400}_{1698291608778}",
+          "timestamp": 1698291608778,
+          "starRating": 5.0,
+          "acceleration": 62.16,
+          "speed": 0.16,
+          "inTime": 154,
+          "outTime": 84,
+          "distance": 1032.69,
+          "hand": 1,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "1_{500}_{1698291609278}",
+          "timestamp": 1698291609278,
+          "starRating": 4.0,
+          "acceleration": 32.12,
+          "speed": 46.17,
+          "inTime": 144,
+          "outTime": 33,
+          "distance": 1745.87,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{600}_{1698291609778}",
+          "timestamp": 1698291609778,
+          "starRating": 5.0,
+          "acceleration": 53.8,
+          "speed": 34.38,
+          "inTime": 249,
+          "outTime": 7,
+          "distance": 1908.14,
+          "hand": 0,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "1_{700}_{1698291610278}",
+          "timestamp": 1698291610278,
+          "starRating": 3.0,
+          "acceleration": 20.32,
+          "speed": 34.45,
+          "inTime": 219,
+          "outTime": 64,
+          "distance": 471.46,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "1_{800}_{1698291610780}",
+          "timestamp": 1698291610780,
+          "starRating": 5.0,
+          "acceleration": 61.29,
+          "speed": 9.57,
+          "inTime": 184,
+          "outTime": 34,
+          "distance": 374.96,
+          "hand": 1,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "0_{900}_{1698291611279}",
+          "timestamp": 1698291611279,
+          "starRating": 5.0,
+          "acceleration": 44.55,
+          "speed": 57.59,
+          "inTime": 106,
+          "outTime": 85,
+          "distance": 1814.89,
+          "hand": 0,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "1_{1000}_{1698291611779}",
+          "timestamp": 1698291611779,
+          "starRating": 5.0,
+          "acceleration": 33.82,
+          "speed": 5.28,
+          "inTime": 238,
+          "outTime": 40,
+          "distance": 188.54,
+          "hand": 1,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "1_{1100}_{1698291612278}",
+          "timestamp": 1698291612278,
+          "starRating": 3.0,
+          "acceleration": 22.83,
+          "speed": 35.02,
+          "inTime": 217,
+          "outTime": 20,
+          "distance": 1743.55,
+          "hand": 1,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "0_{1200}_{1698291612780}",
+          "timestamp": 1698291612780,
+          "starRating": 5.0,
+          "acceleration": 38.5,
+          "speed": 37.45,
+          "inTime": 241,
+          "outTime": 73,
+          "distance": 1731.06,
+          "hand": 0,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "1_{1300}_{1698291613279}",
+          "timestamp": 1698291613279,
+          "starRating": 5.0,
+          "acceleration": 62.9,
+          "speed": 0.77,
+          "inTime": 132,
+          "outTime": 85,
+          "distance": 1817.74,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{1400}_{1698291613780}",
+          "timestamp": 1698291613780,
+          "starRating": 5.0,
+          "acceleration": 41.21,
+          "speed": 43.76,
+          "inTime": 129,
+          "outTime": 38,
+          "distance": 975.92,
+          "hand": 0,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "1_{1500}_{1698291614282}",
+          "timestamp": 1698291614282,
+          "starRating": 4.0,
+          "acceleration": 31.99,
+          "speed": 39.32,
+          "inTime": 167,
+          "outTime": 70,
+          "distance": 1746.56,
+          "hand": 1,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "1_{1600}_{1698291614778}",
+          "timestamp": 1698291614778,
+          "starRating": 5.0,
+          "acceleration": 41.96,
+          "speed": 41.02,
+          "inTime": 163,
+          "outTime": 95,
+          "distance": 1092.33,
+          "hand": 1,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "1_{1700}_{1698291615279}",
+          "timestamp": 1698291615280,
+          "starRating": 5.0,
+          "acceleration": 34.66,
+          "speed": 32.43,
+          "inTime": 178,
+          "outTime": 23,
+          "distance": 196.63,
+          "hand": 1,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "1_{1800}_{1698291615778}",
+          "timestamp": 1698291615778,
+          "starRating": 5.0,
+          "acceleration": 33.15,
+          "speed": 30.02,
+          "inTime": 251,
+          "outTime": 55,
+          "distance": 608.51,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{1900}_{1698291616278}",
+          "timestamp": 1698291616278,
+          "starRating": 5.0,
+          "acceleration": 48.09,
+          "speed": 57.58,
+          "inTime": 181,
+          "outTime": 15,
+          "distance": 1924.83,
+          "hand": 0,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "1_{2000}_{1698291616778}",
+          "timestamp": 1698291616778,
+          "starRating": 5.0,
+          "acceleration": 64.78,
+          "speed": 23.79,
+          "inTime": 103,
+          "outTime": 82,
+          "distance": 1932.67,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{2100}_{1698291617278}",
+          "timestamp": 1698291617279,
+          "starRating": 4.0,
+          "acceleration": 27.59,
+          "speed": 62.52,
+          "inTime": 108,
+          "outTime": 72,
+          "distance": 925.15,
+          "hand": 0,
+          "fistType": "StraightPunch"
+        }
+      ,        {
+          "id": "0_{2200}_{1698291617779}",
+          "timestamp": 1698291617779,
+          "starRating": 2.0,
+          "acceleration": 13.11,
+          "speed": 27.7,
+          "inTime": 281,
+          "outTime": 42,
+          "distance": 1131.97,
+          "hand": 0,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "1_{2300}_{1698291618279}",
+          "timestamp": 1698291618279,
+          "starRating": 2.0,
+          "acceleration": 9.82,
+          "speed": 50.15,
+          "inTime": 284,
+          "outTime": 40,
+          "distance": 1398.29,
+          "hand": 1,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "1_{2400}_{1698291618779}",
+          "timestamp": 1698291618779,
+          "starRating": 5.0,
+          "acceleration": 62.76,
+          "speed": 12.1,
+          "inTime": 114,
+          "outTime": 6,
+          "distance": 1125.97,
+          "hand": 1,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{2500}_{1698291619279}",
+          "timestamp": 1698291619279,
+          "starRating": 4.0,
+          "acceleration": 29.85,
+          "speed": 26.94,
+          "inTime": 197,
+          "outTime": 96,
+          "distance": 86.91,
+          "hand": 0,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "0_{2600}_{1698291619778}",
+          "timestamp": 1698291619778,
+          "starRating": 5.0,
+          "acceleration": 45.58,
+          "speed": 65.74,
+          "inTime": 282,
+          "outTime": 42,
+          "distance": 519.93,
+          "hand": 0,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "0_{2700}_{1698291620278}",
+          "timestamp": 1698291620278,
+          "starRating": 5.0,
+          "acceleration": 56.31,
+          "speed": 57.96,
+          "inTime": 204,
+          "outTime": 85,
+          "distance": 797.04,
+          "hand": 0,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{2800}_{1698291620778}",
+          "timestamp": 1698291620778,
+          "starRating": 2.0,
+          "acceleration": 10.72,
+          "speed": 8.64,
+          "inTime": 147,
+          "outTime": 32,
+          "distance": 47.09,
+          "hand": 0,
+          "fistType": "Punch"
+        }
+      ,        {
+          "id": "0_{2900}_{1698291621279}",
+          "timestamp": 1698291621279,
+          "starRating": 4.0,
+          "acceleration": 33.02,
+          "speed": 4.04,
+          "inTime": 245,
+          "outTime": 28,
+          "distance": 1749.47,
+          "hand": 0,
+          "fistType": "Hook"
+        }
+      ,        {
+          "id": "0_{3000}_{1698291621780}",
+          "timestamp": 1698291621780,
+          "starRating": 5.0,
+          "acceleration": 45.72,
+          "speed": 3.54,
+          "inTime": 188,
+          "outTime": 47,
+          "distance": 807.46,
+          "hand": 0,
+          "fistType": "Hook"
+        }
+      ]
+        }
+      
