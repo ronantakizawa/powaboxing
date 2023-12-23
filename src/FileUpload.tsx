@@ -2,8 +2,6 @@ import React, { useState,useCallback } from 'react';
 import { Statistics, StatisticProps,calculateStatistics, validateJson, Punch, JsonData } from './datahandler';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, TooltipProps } from 'recharts';
 
-
-
 const FileUpload: React.FC = () => {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [isValidJson, setIsValidJson] = useState<boolean>(true);
@@ -67,7 +65,10 @@ const FileUpload: React.FC = () => {
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip bg-gray-700 p-2 rounded text-white">
-          {/* Payload rendering */}
+          <p className="intro">{`Speed: ${payload[0].payload.speed}`}</p>
+          <p className="intro">{`Acceleration: ${payload[0].payload.acceleration}`}</p>
+          <p className="intro">{`Distance: ${payload[0].payload.distance}`}</p>
+          <p className="intro">{`Fist Type: ${payload[0].payload.fistType}`}</p>
         </div>
       );
     }

@@ -1,9 +1,9 @@
 {
-  "name": "my-react-app",
+  "name": "powaboxing",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://ronantakizawa.github.io/powaboxing",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
