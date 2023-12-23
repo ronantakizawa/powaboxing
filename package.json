@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ronantakizawa.github.io/powaboxing",
+  "homepage": "http://ronantakizawa.github.io/powaboxing",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
