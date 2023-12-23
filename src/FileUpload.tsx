@@ -1,13 +1,15 @@
 import React, { useState,useCallback } from 'react';
-import { Statistics, StatisticProps,calculateStatistics, validateJson, Punch } from './datahandler';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Statistics, StatisticProps,calculateStatistics, validateJson, Punch, JsonData } from './datahandler';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, TooltipProps } from 'recharts';
+
+
 
 const FileUpload: React.FC = () => {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [isValidJson, setIsValidJson] = useState<boolean>(true);
   const [timestamps, setTimestamps] = useState<Array<{ speed: number, distance: number, acceleration: number, timestamp: string, fistType:string }>>([]);
 
-  const processJsonData = (json: any) => {
+  const processJsonData = (json: JsonData) => {
     if (validateJson(json)) {
       const statistics = calculateStatistics(json.punches);
       setStats(statistics);
@@ -20,7 +22,6 @@ const FileUpload: React.FC = () => {
         fistType: punch.fistType.toString()
     }));
     setTimestamps(timestampData)
-    console.log(timestamps)
     } else {
       setIsValidJson(false);
     }
@@ -62,18 +63,14 @@ const FileUpload: React.FC = () => {
 
   }));
 
-  const CustomTooltip = ({ active, payload, label }) => {
+  const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip bg-gray-700 p-2 rounded text-white">
-          <p className="intro">{`Speed: ${payload[0].payload.speed}`}</p>
-          <p className="intro">{`Acceleration: ${payload[0].payload.acceleration}`}</p>
-          <p className="intro">{`Distance: ${payload[0].payload.distance}`}</p>
-          <p className="intro">{`Fist Type: ${payload[0].payload.fistType}`}</p>
+          {/* Payload rendering */}
         </div>
       );
     }
-  
     return null;
   };
 
