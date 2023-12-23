@@ -24,6 +24,10 @@ export interface JsonData {
     modeHand: number;
     modePunchType: string;
   }
+  export interface StatisticProps {
+    title: string;
+    value: number | string;
+  }
   
   interface ScrapedData {
     starRating: number;

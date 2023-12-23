@@ -1,5 +1,5 @@
 import FileUpload from './FileUpload';
-import viteLogo from '../public/vite.svg'; // Make sure the path to vite.svg is correct
+import viteLogo from './assets/vite.svg'; // Make sure the path to vite.svg is correct
 
 function App() {
   return (
