@@ -37,6 +37,17 @@ export interface JsonData {
     hands: number[];
     fistTypes: string[];
   }
+
+  export interface AggregateStatistics {
+    aggregatedStats: Statistics;
+    starArray: number[];
+    speedArray: number[];
+    accelerationArray: number[];
+    distanceArray: number[];
+    handArray: number[];
+    fistTypeArray: string[];
+  }
+
   
   export const calculateMode = (array: number[] | string[]): number | string => {
     const frequencyMap: { [key: string]: number } = {};
@@ -56,8 +67,9 @@ export interface JsonData {
     return mode;
   };
   
-  export const calculateStatistics = (punches: Punch[]): Statistics => {
-    const total = punches.reduce<ScrapedData>(
+  export const calculateStatistics = (jsonData: JsonData): Statistics | undefined => {
+    if (validateJson(jsonData)){
+    const total = jsonData.punches.reduce<ScrapedData>(
       (acc, punch) => {
         acc.starRating += punch.starRating;
         acc.acceleration += punch.acceleration;
@@ -70,7 +82,7 @@ export interface JsonData {
       { starRating: 0, acceleration: 0, speed: 0, distance: 0, hands: [], fistTypes: [] }
     );
 
-    const length = punches.length;
+    const length = jsonData.punches.length;
     return {
       avgStarRating: total.starRating / length,
       avgAcceleration: total.acceleration / length,
@@ -78,6 +90,58 @@ export interface JsonData {
       avgDistance: total.distance / length,
       modeHand: calculateMode(total.hands) as number,
       modePunchType: calculateMode(total.fistTypes) as string,
+    };
+  }
+  else{
+    return undefined;
+  }
+  };
+
+  export const calculateAggregateStatistics = (jsonDataArray: JsonData[]): AggregateStatistics => {
+    const starArray = [];
+    const speedArray = [];
+    const accelerationArray = [];
+    const distanceArray = [];
+    const handArray = [];
+    const fistTypeArray = [];
+  
+    for (const jsonData of jsonDataArray) {
+      if (validateJson(jsonData)) {
+        const statistics = calculateStatistics(jsonData);
+        if (statistics){
+          starArray.push(statistics.avgStarRating);
+          speedArray.push(statistics.avgSpeed);
+          accelerationArray.push(statistics.avgAcceleration);
+          distanceArray.push(statistics.avgDistance);
+          handArray.push(statistics.modeHand);
+          fistTypeArray.push(statistics.modePunchType);
+        }
+      }
+    }
+  
+    // Calculate averages and modes
+    const starAverage = starArray.reduce((a, b) => a + b, 0) / starArray.length;
+    const speedAverage = speedArray.reduce((a, b) => a + b, 0) / speedArray.length;
+    const accelerationAverage = accelerationArray.reduce((a, b) => a + b, 0) / accelerationArray.length;
+    const distanceAverage = distanceArray.reduce((a, b) => a + b, 0) / distanceArray.length;
+    const handMode = calculateMode(handArray);
+    const punchMode = calculateMode(fistTypeArray);
+  
+    return {
+      aggregatedStats: {
+        avgStarRating: starAverage,
+        avgAcceleration: accelerationAverage,
+        avgSpeed: speedAverage,
+        avgDistance: distanceAverage,
+        modeHand: handMode as number,
+        modePunchType: punchMode as string,
+      },
+      starArray,
+      speedArray,
+      accelerationArray,
+      distanceArray,
+      handArray,
+      fistTypeArray
     };
   };
   
