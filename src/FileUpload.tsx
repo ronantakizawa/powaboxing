@@ -90,7 +90,7 @@ const FileUpload: React.FC = () => {
   }, []);
   
   const data = graph.map(item => ({
-    name: item.timestamp,
+    timestamp: item.timestamp,
     speed: item.speed,
     acceleration: item.acceleration,
     distance:item.distance,
