@@ -1,5 +1,5 @@
 import React, { useState,useCallback } from 'react';
-import { calculateStatistics, calculateAggregateStatistics } from './datahandler';
+import { calculateStatistics, calculateAggregateStatistics,formatTime } from './datahandler';
 import { Statistics, JsonData, Punch } from './types';
 import StatisticBox from './components/StatisticBox';
 import Graph from './components/Graph';
@@ -10,6 +10,7 @@ const FileUpload: React.FC = () => {
   const [graph, setGraph] = useState<Array<{ speed: number, distance: number, acceleration: number, timestamp: string | undefined, fistType:string }>>([]);
 
   const processJsonData = (json: JsonData) => {
+    const firstTimestamp = json.punches[0]?.timestamp || 0;
       const statistics = calculateStatistics(json);
       if (statistics){
         setStats(statistics);
@@ -18,7 +19,7 @@ const FileUpload: React.FC = () => {
         speed: punch.speed,
         distance:punch.distance,
         acceleration:punch.acceleration,
-        timestamp: punch.timestamp.toString(),
+        timestamp: formatTime(punch.timestamp - firstTimestamp),
         fistType: punch.fistType.toString()
     }));
     setGraph(graphData)

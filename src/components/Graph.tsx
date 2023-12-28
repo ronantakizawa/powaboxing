@@ -18,7 +18,7 @@ const Graph: React.FC<GraphProps> = ({ data }) => {
         <h2 className="text-lg font-bold text-white mb-2 text-center">Average Speed </h2>
         <LineChart width={600} height={300} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="timestamp" hide/>
+          <XAxis dataKey="timestamp" />
           <YAxis label={{ value: 'Speed (km/h)', angle: -90, position: 'insideLeft' }} dataKey="speed" />
           <Tooltip content={<CustomTooltip active={undefined} payload={undefined} label={undefined} />} />
           <Legend />

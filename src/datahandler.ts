@@ -120,4 +120,18 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
   
     return isValid;
   };
+
+  export const formatTime = (milliseconds:number) => {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    let hours : string | number = Math.floor(totalSeconds / 3600);
+    let minutes : string | number = Math.floor((totalSeconds - (hours * 3600)) / 60);
+    let seconds : string | number = totalSeconds - (hours * 3600) - (minutes * 60);
+  
+    // Padding each value with leading zero if needed
+    hours = hours.toString().padStart(2, '0');
+    minutes = minutes.toString().padStart(2, '0');
+    seconds = seconds.toString().padStart(2, '0');
+  
+    return `${hours}:${minutes}:${seconds}`;
+  }
   
