@@ -1,17 +1,7 @@
 
 import React from 'react';
 import Statistic from "./Statistic";
-
-type StatisticsProps = {
-  stats: {
-    avgStarRating: number;
-    avgAcceleration: number;
-    avgSpeed: number;
-    avgDistance: number;
-    modeHand: number;
-    modePunchType: string;
-  };
-};
+import { StatisticsProps } from '../types';
 
 const StatisticBox: React.FC<StatisticsProps> = ({ stats }) => {
   return (
@@ -21,7 +11,7 @@ const StatisticBox: React.FC<StatisticsProps> = ({ stats }) => {
         <Statistic title="Average Star Rating ⭐️" value={stats.avgStarRating} />
         <Statistic title="Average Acceleration" value={stats.avgAcceleration.toFixed(2) +" Gs"} />
         <Statistic title="Average Speed" value={stats.avgSpeed.toFixed(2) + " km/h"} />
-        <Statistic title="Average Distance" value={stats.avgDistance.toFixed(2) + " m" }/>
+        <Statistic title="Average Force" value={stats.avgForce.toFixed(2) + " Newtons" }/>
         <Statistic title="Most Common Hand" value={stats.modeHand === 0 ? "Left Hand" : "Right Hand"} />
         <Statistic title="Most Common Punch Type" value={stats.modePunchType} />
       </div>

@@ -6,7 +6,7 @@ export interface Punch {
     speed: number;
     inTime: number;
     outTime: number;
-    distance: number;
+    force: number;
     hand: number;
     fistType: string;
   }
@@ -20,7 +20,7 @@ export interface JsonData {
     avgStarRating: number;
     avgAcceleration: number;
     avgSpeed: number;
-    avgDistance: number;
+    avgForce: number;
     modeHand: number;
     modePunchType: string;
   }
@@ -33,7 +33,7 @@ export interface JsonData {
     starRating: number;
     acceleration: number;
     speed: number;
-    distance: number;
+    force: number;
     hands: number[];
     fistTypes: string[];
   }
@@ -43,7 +43,28 @@ export interface JsonData {
     starArray: number[];
     speedArray: number[];
     accelerationArray: number[];
-    distanceArray: number[];
+    forceArray: number[];
     handArray: number[];
     fistTypeArray: string[];
   }
+
+  export type GraphProps = {
+    data: Array<{
+      isMultipleFiles:boolean,
+      timestamp: string | undefined;
+      speed: number;
+      acceleration: number;
+      force: number;
+    }>;
+  };
+
+  export type StatisticsProps = {
+    stats: {
+      avgStarRating: number;
+      avgAcceleration: number;
+      avgSpeed: number;
+      avgForce: number;
+      modeHand: number;
+      modePunchType: string;
+    };
+  };

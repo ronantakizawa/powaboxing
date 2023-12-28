@@ -1,28 +1,21 @@
 import React, { useState,useCallback } from 'react';
-import { calculateStatistics, calculateAggregateStatistics,formatTime } from './datahandler';
-import { Statistics, JsonData, Punch } from './types';
+import { calculateStatistics, calculateAggregateStatistics, getPunchData } from './datahandler';
+import { Statistics, JsonData } from './types';
 import StatisticBox from './components/StatisticBox';
 import Graph from './components/Graph';
 
 const FileUpload: React.FC = () => {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [isValidJson, setIsValidJson] = useState<boolean>(true);
-  const [graph, setGraph] = useState<Array<{ speed: number, distance: number, acceleration: number, timestamp: string | undefined, fistType:string }>>([]);
+  const [graph, setGraph] = useState<Array<{ speed: number, force: number, acceleration: number, timestamp: string | undefined, fistType:string }>>([]);
+  const [isMultipleFiles,setIsMultipleFiles] = useState<boolean>(false);
 
   const processJsonData = (json: JsonData) => {
-    const firstTimestamp = json.punches[0]?.timestamp || 0;
       const statistics = calculateStatistics(json);
       if (statistics){
         setStats(statistics);
-      setIsValidJson(true);
-      const graphData = json.punches.map((punch: Punch) => ({
-        speed: punch.speed,
-        distance:punch.distance,
-        acceleration:punch.acceleration,
-        timestamp: formatTime(punch.timestamp - firstTimestamp),
-        fistType: punch.fistType.toString()
-    }));
-    setGraph(graphData)
+        setIsValidJson(true);
+        setGraph(getPunchData(json))
 
       }
       else {
@@ -37,7 +30,7 @@ const FileUpload: React.FC = () => {
       setStats(statistics.aggregatedStats);
       const transformedData = statistics.speedArray.map((speed, index) => ({
         speed: speed,
-        distance: statistics.distanceArray[index],
+        force: statistics.forceArray[index],
         acceleration: statistics.accelerationArray[index],
         timestamp: undefined,
         fistType: statistics.fistTypeArray[index]
@@ -64,6 +57,7 @@ const FileUpload: React.FC = () => {
     const files = event.target.files;
     if (files) {
       if (files.length === 1) {
+        setIsMultipleFiles(false)
         try {
           const text = await files[0].text();
           const jsonData = JSON.parse(text) as JsonData; // Parse the text as JsonData
@@ -73,6 +67,7 @@ const FileUpload: React.FC = () => {
           setIsValidJson(false);
         }
       } else {
+        setIsMultipleFiles(true)
         const jsonDataArray = [];
         for (const file of files) {
           try {
@@ -91,10 +86,11 @@ const FileUpload: React.FC = () => {
   }, []);
   
   const data = graph.map(item => ({
+    isMultipleFiles:isMultipleFiles,
     timestamp: item.timestamp,
     speed: item.speed,
     acceleration: item.acceleration,
-    distance:item.distance,
+    force:item.force,
     fistType:item.fistType
 
   }));
@@ -122,7 +118,7 @@ const FileUpload: React.FC = () => {
               avgStarRating: stats.avgStarRating,
               avgAcceleration: stats.avgAcceleration,
               avgSpeed: stats.avgSpeed,
-              avgDistance: stats.avgDistance,
+              avgForce: stats.avgForce,
               modeHand: stats.modeHand,
               modePunchType: stats.modePunchType
             }} />

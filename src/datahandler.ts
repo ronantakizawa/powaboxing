@@ -25,12 +25,12 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
         acc.starRating += punch.starRating;
         acc.acceleration += punch.acceleration;
         acc.speed += punch.speed;
-        acc.distance += punch.distance;
+        acc.force += punch.acceleration * 3;
         acc.hands.push(punch.hand);
         acc.fistTypes.push(punch.fistType);
         return acc;
       },
-      { starRating: 0, acceleration: 0, speed: 0, distance: 0, hands: [], fistTypes: [] }
+      { starRating: 0, acceleration: 0, speed: 0, force: 0, hands: [], fistTypes: [] }
     );
 
     const length = jsonData.punches.length;
@@ -38,7 +38,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
       avgStarRating: total.starRating / length,
       avgAcceleration: total.acceleration / length,
       avgSpeed: total.speed / length,
-      avgDistance: total.distance / length,
+      avgForce: total.force / length,
       modeHand: calculateMode(total.hands) as number,
       modePunchType: calculateMode(total.fistTypes) as string,
     };
@@ -52,7 +52,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
     const starArray = [];
     const speedArray = [];
     const accelerationArray = [];
-    const distanceArray = [];
+    const forceArray = [];
     const handArray = [];
     const fistTypeArray = [];
   
@@ -63,7 +63,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
           starArray.push(statistics.avgStarRating);
           speedArray.push(statistics.avgSpeed);
           accelerationArray.push(statistics.avgAcceleration);
-          distanceArray.push(statistics.avgDistance);
+          forceArray.push(statistics.avgForce);
           handArray.push(statistics.modeHand);
           fistTypeArray.push(statistics.modePunchType);
         }
@@ -74,7 +74,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
     const starAverage = starArray.reduce((a, b) => a + b, 0) / starArray.length;
     const speedAverage = speedArray.reduce((a, b) => a + b, 0) / speedArray.length;
     const accelerationAverage = accelerationArray.reduce((a, b) => a + b, 0) / accelerationArray.length;
-    const distanceAverage = distanceArray.reduce((a, b) => a + b, 0) / distanceArray.length;
+    const forceAverage = forceArray.reduce((a, b) => a + b, 0) / forceArray.length;
     const handMode = calculateMode(handArray);
     const punchMode = calculateMode(fistTypeArray);
   
@@ -83,14 +83,14 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
         avgStarRating: starAverage,
         avgAcceleration: accelerationAverage,
         avgSpeed: speedAverage,
-        avgDistance: distanceAverage,
+        avgForce: forceAverage,
         modeHand: handMode as number,
         modePunchType: punchMode as string,
       },
       starArray,
       speedArray,
       accelerationArray,
-      distanceArray,
+      forceArray,
       handArray,
       fistTypeArray
     };
@@ -133,5 +133,17 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
     seconds = seconds.toString().padStart(2, '0');
   
     return `${hours}:${minutes}:${seconds}`;
+  }
+
+  export const getPunchData = (json:JsonData) =>{
+    const firstTimestamp = json.punches[0]?.timestamp || 0;
+    const graphData = json.punches.map((punch: Punch) => ({
+      speed: punch.speed,
+      force: punch.acceleration * 3,
+      acceleration:punch.acceleration,
+      timestamp: formatTime(punch.timestamp - firstTimestamp),
+      fistType: punch.fistType.toString()
+  }));
+  return graphData
   }
   
