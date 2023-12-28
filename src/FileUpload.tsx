@@ -97,12 +97,12 @@ const FileUpload: React.FC = () => {
 
   return (
     <div className="p-4 max-w-lg mx-auto bg-black text-white">
-      <div className="flex items-center mb-4">
+      <div className="flex flex-col sm:flex-row items-center mb-4">
         <input
           type="file"
           multiple
           onChange={handleFileChange}
-          className="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-700 file:text-white file:bg-gray-800 hover:file:bg-gray-700"
+          className="file:mb-2 sm:mb-0 sm:file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-700 file:text-white file:bg-gray-800 hover:file:bg-gray-700"
         />
         <button
           onClick={handleExampleClick}
@@ -111,28 +111,26 @@ const FileUpload: React.FC = () => {
         </button>
       </div>
       {isValidJson ? (
-  <div>
-    {stats && (
-          <>
-          <StatisticBox stats={{
-              avgStarRating: stats.avgStarRating,
-              avgAcceleration: stats.avgAcceleration,
-              avgSpeed: stats.avgSpeed,
-              avgForce: stats.avgForce,
-              modeHand: stats.modeHand,
-              modePunchType: stats.modePunchType
-            }} />
-            <Graph data={data} />
-            
+        <div>
+          {stats && (
+            <>
+              <StatisticBox stats={{
+                avgStarRating: stats.avgStarRating,
+                avgAcceleration: stats.avgAcceleration,
+                avgSpeed: stats.avgSpeed,
+                avgForce: stats.avgForce,
+                modeHand: stats.modeHand,
+                modePunchType: stats.modePunchType
+              }} />
+              <Graph data={data} />
             </>
-        )}
-  </div>
-) : (
-  <div className="text-red-500 mt-2">Invalid POWA Boxing Data</div>
-)}
-  </div>
+          )}
+        </div>
+      ) : (
+        <div className="text-red-500 mt-2">Invalid POWA Boxing Data</div>
+      )}
+    </div>
   );
-  
 };
 
 export default FileUpload;
