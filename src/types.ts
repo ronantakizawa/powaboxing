@@ -56,6 +56,7 @@ export interface JsonData {
       acceleration: number;
       force: number;
     }>;
+    combos: ComboItem[][] | null;
   };
 
   export type StatisticsProps = {
@@ -68,3 +69,8 @@ export interface JsonData {
       modePunchType: string;
     };
   };
+
+  export type ComboItem = {
+  fistType: string;
+  timestamp: string;
+};

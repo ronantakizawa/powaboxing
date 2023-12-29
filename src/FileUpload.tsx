@@ -1,13 +1,15 @@
 import React, { useState,useCallback } from 'react';
-import { calculateStatistics, calculateAggregateStatistics, getPunchData } from './datahandler';
-import { Statistics, JsonData } from './types';
+import { calculateStatistics, calculateAggregateStatistics, getPunchData, getCombos } from './datahandler';
+import { Statistics, JsonData, ComboItem } from './types';
 import StatisticBox from './components/StatisticBox';
 import Graph from './components/Graph';
+import Combos from './components/Combos';
 
 const FileUpload: React.FC = () => {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [isValidJson, setIsValidJson] = useState<boolean>(true);
   const [graph, setGraph] = useState<Array<{ speed: number, force: number, acceleration: number, timestamp: string | undefined, fistType:string }>>([]);
+  const [combos,setCombos] = useState<ComboItem[][] | null>(null);
   const [isMultipleFiles,setIsMultipleFiles] = useState<boolean>(false);
 
   const processJsonData = (json: JsonData) => {
@@ -16,6 +18,8 @@ const FileUpload: React.FC = () => {
         setStats(statistics);
         setIsValidJson(true);
         setGraph(getPunchData(json))
+        const combos = getCombos(json);
+        setCombos(combos);
 
       }
       else {
@@ -122,7 +126,8 @@ const FileUpload: React.FC = () => {
                 modeHand: stats.modeHand,
                 modePunchType: stats.modePunchType
               }} />
-              <Graph data={data} />
+              <Graph data={data} combos={combos}/>
+              {!isMultipleFiles ? <Combos combos={combos} /> : null}
             </>
           )}
         </div>

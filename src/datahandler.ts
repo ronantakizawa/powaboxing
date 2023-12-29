@@ -1,4 +1,4 @@
-import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from "./types";
+import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData, ComboItem } from "./types";
 
   export const calculateMode = (array: number[] | string[]): number | string => {
     const frequencyMap: { [key: string]: number } = {};
@@ -146,4 +146,33 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData } from ".
   }));
   return graphData
   }
+  export const getCombos = (json: JsonData): ComboItem[][] => {
+    const combos: ComboItem[][] = [];
+    const punches = json.punches;
+    const firstTimestamp = json.punches[0]?.timestamp || 0;
   
+    for (let i = 0; i < punches.length; i++) {
+      const combo: ComboItem[] = [{
+        fistType: punches[i].fistType.toString(),
+        timestamp: formatTime(punches[i].timestamp - firstTimestamp)
+      }];
+  
+      for (let j = i + 1; j < punches.length; j++) {
+        if (Math.abs(punches[j].timestamp - punches[j - 1].timestamp) <= 500) {
+          combo.push({
+            fistType: punches[j].fistType.toString(),
+            timestamp: formatTime(punches[j].timestamp - firstTimestamp)
+          });
+        } else {
+          break; // Break the inner loop if the time difference is more than 500 ms
+        }
+      }
+  
+      if (combo.length > 1) {
+        combos.push(combo);
+        i += combo.length - 1; // Skip the punches already added to a combo
+      }
+    }
+  
+    return combos;
+  };
