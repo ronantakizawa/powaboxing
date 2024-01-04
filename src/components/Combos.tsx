@@ -12,7 +12,7 @@ const Combo: React.FC<{ combo: ComboItem[] }> = ({ combo }) => {
       {combo.map((punch, index) => (
         // 'mr-2' adds margin to the right of each punch except the last one
         <span key={index} className="text-white font-mono">
-          {punch.fistType}{index < combo.length - 1 ? ',' : ''}
+          {punch.fistType + (punch.hand === 0 ? '(L)' : '(R)')} {index < combo.length - 1 ? ',' : ''}
         </span>
       ))}
       <p className="text-orange-400">{combo[0].timestamp + "-"+combo[combo.length-1].timestamp}</p>

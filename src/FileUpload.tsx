@@ -8,7 +8,7 @@ import Combos from './components/Combos';
 const FileUpload: React.FC = () => {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [isValidJson, setIsValidJson] = useState<boolean>(true);
-  const [graph, setGraph] = useState<Array<{ speed: number, force: number, acceleration: number, timestamp: string | undefined, fistType:string }>>([]);
+  const [graph, setGraph] = useState<Array<{ speed: number, force: number, acceleration: number, timestamp: string | undefined, hand:number | undefined, fistType:string }>>([]);
   const [combos,setCombos] = useState<ComboItem[][] | null>(null);
   const [isMultipleFiles,setIsMultipleFiles] = useState<boolean>(false);
 
@@ -37,6 +37,7 @@ const FileUpload: React.FC = () => {
         force: statistics.forceArray[index],
         acceleration: statistics.accelerationArray[index],
         timestamp: undefined,
+        hand:undefined,
         fistType: statistics.fistTypeArray[index]
       }));
       
@@ -92,6 +93,7 @@ const FileUpload: React.FC = () => {
   const data = graph.map(item => ({
     isMultipleFiles:isMultipleFiles,
     timestamp: item.timestamp,
+    hand:item.hand,
     speed: item.speed,
     acceleration: item.acceleration,
     force:item.force,

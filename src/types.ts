@@ -52,6 +52,7 @@ export interface JsonData {
     data: Array<{
       isMultipleFiles:boolean,
       timestamp: string | undefined;
+      hand:number | undefined;
       speed: number;
       acceleration: number;
       force: number;
@@ -72,5 +73,6 @@ export interface JsonData {
 
   export type ComboItem = {
   fistType: string;
+  hand: number;
   timestamp: string;
 };
