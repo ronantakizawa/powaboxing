@@ -26,7 +26,7 @@ const Combos: React.FC<ComboProps> = ({ combos }) => {
   }
 
   return (
-    <div className="p-6 bg-gray-800 shadow rounded-lg mb-10 overflow-hidden">
+    <div className="p-6 bg-gray-800 shadow rounded-lg mb-10 overflow-hidden" style={{ height: '500px', overflowY: 'auto' }}>
       <div className="font-bold text-2xl mb-4 text-white">Combos</div>
       <div className="flex flex-col space-y-3">
         {combos.map((combo: ComboItem[], index: number) => (

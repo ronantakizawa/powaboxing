@@ -27,7 +27,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData, ComboIte
         acc.speed += punch.speed;
         acc.force += punch.acceleration * 3;
         acc.hands.push(punch.hand);
-        acc.fistTypes.push(punch.fistType === 'Punch' ? 'Hook' : (punch.fistType === 'Hook' ? 'Uppercut' : punch.fistType));
+        acc.fistTypes.push(punch.fistType === '1' ? 'Straightpunch' : (punch.fistType === '2' ? 'Uppercut' : 'Hook'));
         return acc;
       },
       { starRating: 0, acceleration: 0, speed: 0, force: 0, hands: [], fistTypes: [] }
@@ -65,7 +65,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData, ComboIte
           accelerationArray.push(statistics.avgAcceleration);
           forceArray.push(statistics.avgForce);
           handArray.push(statistics.modeHand);
-          fistTypeArray.push(statistics.modePunchType === 'Punch' ? 'Hook' : (statistics.modePunchType === 'Hook' ? 'Uppercut' : statistics.modePunchType));
+          fistTypeArray.push(statistics.modePunchType === '1' ? 'Straightpunch' : (statistics.modePunchType === '2' ? 'Uppercut' : 'Hook'));
         }
       }
     }
@@ -142,7 +142,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData, ComboIte
       force: punch.acceleration * 3,
       acceleration:punch.acceleration,
       timestamp: formatTime(punch.timestamp - firstTimestamp),
-      fistType: punch.fistType === 'Punch' ? 'Hook' : (punch.fistType === 'Hook' ? 'Uppercut' : punch.fistType),
+      fistType: punch.fistType === '1' ? 'Straightpunch' : (punch.fistType === '2' ? 'Uppercut' : 'Hook'),
       hand: punch.hand
   }));
   return graphData
@@ -154,7 +154,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData, ComboIte
   
     for (let i = 0; i < punches.length; i++) {
       const combo: ComboItem[] = [{
-        fistType: punches[i].fistType === 'Punch' ? 'Hook' : (punches[i].fistType === 'Hook' ? 'Uppercut' : punches[i].fistType),
+        fistType: punches[i].fistType === '1' ? 'Straightpunch' : (punches[i].fistType === '2' ? 'Uppercut' : 'Hook'),
         timestamp: formatTime(punches[i].timestamp - firstTimestamp),
         hand:punches[i].hand
       }];
@@ -162,7 +162,7 @@ import { JsonData, Statistics, AggregateStatistics, Punch, ScrapedData, ComboIte
       for (let j = i + 1; j < punches.length; j++) {
         if (Math.abs(punches[j].timestamp - punches[j - 1].timestamp) <= 500) {
           combo.push({
-            fistType: punches[i].fistType === 'Punch' ? 'Hook' : (punches[i].fistType === 'Hook' ? 'Uppercut' : punches[i].fistType),
+            fistType: punches[i].fistType === '1' ? 'Straightpunch' : (punches[i].fistType === '2' ? 'Uppercut' : 'Hook'),
             timestamp: formatTime(punches[j].timestamp - firstTimestamp),
             hand: punches[j].hand
           });
