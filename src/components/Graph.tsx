@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import CustomTooltip from './CustomToolTip';
-import {GraphProps, ComboItem} from "../types"
+import {GraphProps} from "../types"
 
 
-const Graph: React.FC<GraphProps> = ({ data, combos }) => {
+const Graph: React.FC<GraphProps> = ({ data }) => {
 
-  const  calculateSize = (comboArray: ComboItem[][] | null) => {
-    if (!Array.isArray(comboArray)) {
-        throw new Error('Input must be an array');
+
+  console.log(data)
+
+  const calculateSize = (data: GraphProps['data']) => {
+    if (!Array.isArray(data)) {
+      throw new Error('Input must be an array');
     }
+    return Math.ceil(data.length / 2) + 1;
+  }
 
-    return Math.ceil(comboArray.length / 2) + 1;
-}
-
-const [graphResizeIndex, setGraphResizeIndex] = useState(calculateSize(combos));
+const [graphResizeIndex, setGraphResizeIndex] = useState(calculateSize(data));
 
 const handleSliderChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
   setGraphResizeIndex(Number(event.target.value));
@@ -28,7 +30,7 @@ const handleSliderChange: React.ChangeEventHandler<HTMLInputElement> = (event) =
           <input 
             type="range" 
             min="2" 
-            max={calculateSize(combos)*2}  
+            max={calculateSize(data)*2}  
             value={graphResizeIndex}
             onChange={handleSliderChange}
             className="slider" 

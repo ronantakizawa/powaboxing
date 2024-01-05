@@ -57,7 +57,6 @@ export interface JsonData {
       acceleration: number;
       force: number;
     }>;
-    combos: ComboItem[][] | null;
   };
 
   export type StatisticsProps = {

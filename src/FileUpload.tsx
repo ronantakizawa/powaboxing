@@ -8,7 +8,7 @@ import Combos from './components/Combos';
 const FileUpload: React.FC = () => {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [isValidJson, setIsValidJson] = useState<boolean>(true);
-  const [graph, setGraph] = useState<Array<{ speed: number, force: number, acceleration: number, timestamp: string | undefined, hand:number | undefined, fistType:string }>>([]);
+  const [graph, setGraph] = useState<Array<{ speed: number, force: number, acceleration: number, timestamp: string, hand:number | undefined, fistType:string }>>([]);
   const [combos,setCombos] = useState<ComboItem[][] | null>(null);
   const [isMultipleFiles,setIsMultipleFiles] = useState<boolean>(false);
 
@@ -36,7 +36,7 @@ const FileUpload: React.FC = () => {
         speed: speed,
         force: statistics.forceArray[index],
         acceleration: statistics.accelerationArray[index],
-        timestamp: undefined,
+        timestamp: `File# ${index+1}`,
         hand:undefined,
         fistType: statistics.fistTypeArray[index]
       }));
@@ -101,6 +101,7 @@ const FileUpload: React.FC = () => {
 
   }));
 
+
   return (
     <div className="p-4 max-w-lg mx-auto bg-black text-white">
       <div className="flex flex-col sm:flex-row items-center mb-4">
@@ -128,7 +129,7 @@ const FileUpload: React.FC = () => {
                 modeHand: stats.modeHand,
                 modePunchType: stats.modePunchType
               }} />
-              <Graph data={data} combos={combos}/>
+              <Graph data={data} />
               {!isMultipleFiles ? <Combos combos={combos} /> : null}
             </>
           )}
